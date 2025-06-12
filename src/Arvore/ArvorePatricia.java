@@ -1,3 +1,10 @@
+package Arvore;
+
+import ClassesAuxiliares.FilaInt;
+import ClassesAuxiliares.FilaNoPatricia;
+import ClassesAuxiliares.PilhaNoPatricia;
+import ClassesAuxiliares.PilhaString;
+
 public class ArvorePatricia {
     private NoPatricia raiz;
 
@@ -89,19 +96,71 @@ public class ArvorePatricia {
         return soma;
     }
 
-    public void exibirPalavras() {
-        exibirPalavras(raiz, "");
+    public void exibirPalavrasRecursivo() {
+        exibirPalavrasRecursivo(raiz, "");
     }
-
-    private void exibirPalavras(NoPatricia no, String prefixo) {
+    private void exibirPalavrasRecursivo(NoPatricia no, String prefixo) {
         if (no != null) {
             String atual = prefixo + no.getPalavra();
             if (no.isFim()) {
                 System.out.println(atual);
             }
             for (int i = 0; i < 26; i++) {
-                exibirPalavras(no.getvLig(i), atual);
+                exibirPalavrasRecursivo(no.getvLig(i), atual);
             }
         }
+    }
+
+    public void exibirPalavrasIterativo(){
+        NoPatricia aux = raiz;
+        String palavra = "";
+        PilhaNoPatricia pilhaNo = new PilhaNoPatricia();
+        PilhaString pilhaPalavras = new PilhaString();
+
+        pilhaNo.push(aux);
+        pilhaPalavras.push(palavra);
+        while(!pilhaNo.isEmpty()){
+            aux = pilhaNo.pop();
+            palavra = pilhaPalavras.pop();
+            if(aux.isFim()){
+                System.out.println(palavra+aux.getPalavra());
+            }
+            for(int i=0; i<26; i++){
+                if(aux.getvLig(i) != null){ //empilhar
+                    pilhaNo.push(aux.getvLig(i));
+                    pilhaPalavras.push(palavra+aux.getPalavra());
+                }
+            }
+        }
+    }
+
+    public void exibirNivelANivel() {
+        NoPatricia aux = raiz;
+        int nivel, ant;
+        FilaNoPatricia filaNo = new FilaNoPatricia();
+        FilaInt filaNivel = new FilaInt();
+
+        filaNo.enqueue(aux);
+        filaNivel.enqueue(1);
+        ant = 0;
+        while(!filaNo.isEmpty()){
+            aux = filaNo.dequeue();
+            nivel = filaNivel.dequeue();
+            if(nivel != ant){
+                System.out.println("Nivel: " + nivel);
+                System.out.println("\t"+aux.getPalavra());
+                ant = nivel;
+            }
+            else
+                System.out.println("\t"+aux.getPalavra());
+
+            for(int i=0; i<26; i++){
+                if(aux.getvLig(i) != null){
+                    filaNo.enqueue(aux.getvLig(i));
+                    filaNivel.enqueue(nivel+1);
+                }
+            }
+        }
+        System.out.println();
     }
 }

@@ -1,3 +1,5 @@
+package Arvore;
+
 public class NoPatricia {
     private String palavra;
     private NoPatricia[] vLig;
