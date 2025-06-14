@@ -158,7 +158,28 @@ public class Principal {
         arvore.inserir("carangueijo");
         arvore.inserir("rodolfo");
         arvore.inserir("leandro");
-        arvore.inserir("abe");
+        arvore.inserir("teste");
+        arvore.inserir("oi");
+        arvore.inserir("cabelo");
+        arvore.inserir("cabelada");
+        arvore.inserir("cabelasso");
+        arvore.inserir("cabelinho");
+        arvore.inserir("oloco");
+        arvore.inserir("oleo");
+        arvore.inserir("oraculo");
+        arvore.inserir("oracao");
+        arvore.inserir("orta");
+        arvore.inserir("lamparina");
+        arvore.inserir("lampiao");
+        arvore.inserir("lambida");
+        arvore.inserir("latido");
+        arvore.inserir("laticinio");
+        arvore.inserir("latao");
+        arvore.inserir("letreiro");
+        arvore.inserir("letra");
+        arvore.inserir("letrado");
+        arvore.inserir("latido");
+        arvore.inserir("boi");
 
         //exibição nível a nível
         System.out.println("Exibição Nível a Nível:");
